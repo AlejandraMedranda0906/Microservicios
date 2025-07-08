@@ -116,6 +116,7 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false 
+```  
     
 
 ## 12. Implementación del API Gateway
@@ -124,10 +125,9 @@ El Gateway permite enrutar automáticamente las peticiones según el nombre del 
 
 Puerto: 8080
 
-Archivo application.yml:
+** Archivo application.yml:**
 
-...
-spring
+```spring:
   cloud:
     gateway:
       discovery:
@@ -142,7 +142,7 @@ spring
           uri: lb://APPOINTMENT-SERVICE
           predicates:
             - Path=/appointments/**
-
+```  
 ## 13. Resultados de la Implementación
 
 ### 13.1. Pruebas Realizadas
