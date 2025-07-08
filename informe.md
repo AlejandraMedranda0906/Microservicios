@@ -115,7 +115,8 @@ server:
 eureka:
   client:
     register-with-eureka: false
-    fetch-registry: false
+    fetch-registry: false 
+    
 
 ## 12. Implementación del API Gateway
 
@@ -125,7 +126,8 @@ Puerto: 8080
 
 Archivo application.yml:
 
-```spring
+...
+spring
   cloud:
     gateway:
       discovery:
@@ -179,12 +181,16 @@ La arquitectura implementada permite futuras extensiones, como integración de s
 ## 15. Anexos
 Video explicativo del proyecto: https://youtu.be/1qXU4fDfiHw
 
-## 16. Referencias 
-Newman, S. (2015). Building Microservices: Designing Fine-Grained Systems. O'Reilly Media.
+## 16. Referencias (Formato APA 7)
 
-Richardson, C., & Smith, F. (2016). Microservices: From Design to Deployment. NGINX, Inc.
-
-Spring. (2024). Spring Cloud Reference Documentation. Recuperado de https://spring.io/projects/spring-cloud
+- Newman, S. (2022). *Building Microservices* (2nd ed.). SamNewman.io.  
+- Späth, P., Cosmina, I., Harrop, R., & Schaefer, C. (2023). *Pro Spring 6: An In-Depth Guide to the Spring Framework*. Apress.  
+- Heckler, M. (2021). *Spring Boot: Up and Running: Building Cloud Native Java and Kotlin Applications*. O’Reilly Media.  
+- Spring Cloud. (2023). *Spring Cloud 2023.0 Release Notes*. GitHub.  
+- Baresi, L., Quattrocchi, G., & Tamburri, D. A. (2022). Microservice Architecture Practices and Experience: A Focused Look on Docker Configuration Files. *arXiv*. :contentReference[oaicite:1]{index=1}  
+- Billawa, P., Bambhore Tukaram, A., Díaz Ferreyra, N. E., Steghöfer, J.-P., Scandariato, R., & Simhandl, G. (2022). SoK: Security of Microservice Applications: A Practitioners' Perspective on Challenges and Best Practices. *arXiv*. :contentReference[oaicite:2]{index=2}  
+- Waseem, M., Liang, P., Ahmad, A., Shahin, M., Ali Khan, A., & Márquez, G. (2022). Decision Models for Selecting Patterns and Strategies in Microservices Systems and their Evaluation by Practitioners. *arXiv*. :contentReference[oaicite:3]{index=3}  
+- Waseem, M., Liang, P., Shahin, M., Di Salle, A., & Márquez, G. (2021). Design, Monitoring, and Testing of Microservices Systems: The Practitioners' Perspective. *arXiv*. :contentReference[oaicite:4]{index=4}  
 
 
 
