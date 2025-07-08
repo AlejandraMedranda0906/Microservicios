@@ -17,15 +17,16 @@
 
 Los sistemas monolíticos presentan limitaciones en cuanto a escalabilidad, mantenibilidad y tolerancia a fallos. En este proyecto práctico se observa la migración del sistema de agendamiento de citas de un centro de spa desde una arquitectura monolítica hacia una arquitectura de microservicios.
 
-Esta migración busca mejorar la escalabilidad, la flexibilidad, el mantenimiento y la disponibilidad del sistema, permitiendo un desarrollo y despliegue independiente de funcionalidades clave y mejorando así la eficiencia del sistema.
-
+Esta migración busca mejorar la escalabilidad, la flexibilidad, el mantenimiento y la disponibilidad del sistema, permitiendo un desarrollo y despliegue independiente de funcionalidades clave y mejorando así la eficiencia del sistema(Newman, 2022).
 ---
 
 ## 4. Objetivos
 
-- Aplicar los conceptos de arquitectura de microservicios a un proyecto práctico.  
-- Abordar la separación de responsabilidades, despliegue independiente y uso de componentes clave como el servicio descubridor (Eureka) y el API Gateway.  
-- Aplicar herramientas de descubrimiento de servicios y punto de acceso único para facilitar la comunicación dinámica y centralizada entre múltiples servicios distribuidos.
+- Aplicar los conceptos de arquitectura de microservicios a un proyecto práctico.
+
+- Abordar la separación de responsabilidades, despliegue independiente y uso de Eureka y API Gateway.
+
+- Usar herramientas de descubrimiento de servicios y punto de acceso único para facilitar la comunicación entre servicios distribuidos.
 
 ---
 
@@ -58,7 +59,7 @@ Se han seleccionado las siguientes funcionalidades para ser desacopladas como mi
 Para permitir el descubrimiento y la comunicación entre microservicios, se implementaron:
 
 - **Servicio Descubridor (Eureka Server)** ejecutándose en el puerto `8761`.  
-- **API Gateway** como punto de entrada centralizado, ejecutándose en el puerto `8080` y ruteando solicitudes según el nombre del microservicio registrado en Eureka.
+- **API Gateway** como punto de entrada centralizado, ejecutándose en el puerto `8080` y ruteando solicitudes según el nombre del microservicio registrado en Eureka(Newman, 2022).
 
 ---
 
@@ -70,7 +71,7 @@ Cada microservicio fue configurado con:
 - Puerto aleatorio (`server.port: 0`).  
 - Registro automático en Eureka.  
 - Redirección de rutas desde el Gateway.  
-- Base de datos propia para cada microservicio (ElephantSQL y MySQL).
+- Base de datos propia para cada microservicio.
 
 ---
 
@@ -117,11 +118,11 @@ eureka:
     register-with-eureka: false
     fetch-registry: false 
 ```  
-    
+---
 
 ## 12. Implementación del API Gateway
 
-El Gateway permite enrutar automáticamente las peticiones según el nombre del servicio registrado en Eureka.
+El Gateway permite enrutar automáticamente las peticiones según el nombre del servicio registrado en Eureka(Heckler, 2021).
 
 Puerto: 8080
 
@@ -143,6 +144,8 @@ Puerto: 8080
           predicates:
             - Path=/appointments/**
 ```  
+---
+
 ## 13. Resultados de la Implementación
 
 ### 13.1. Pruebas Realizadas
@@ -171,26 +174,38 @@ Puerto: 8080
 - Pruebas unitarias por separado en cada microservicio  
 - Documentación de los endpoints utilizando Swagger
 
-## 14.  Conclusiones
-La migración del sistema del spa a una arquitectura de microservicios permite una estructura más escalable, mantenible y robusta, con componentes independientes que mejoran el rendimiento y la organización del proyecto.
+---
 
-Se comprobó la eficiencia del uso de Eureka como servicio descubridor y del API Gateway como punto de acceso unificado.
+## 14. Conclusiones
 
-La arquitectura implementada permite futuras extensiones, como integración de sistemas de pago o chat, sin afectar el resto de los componentes.
+La implementación de una arquitectura de microservicios en el sistema de agendamiento de citas del SPA permitió cumplir satisfactoriamente los objetivos planteados.
+
+Se logró aplicar los conceptos clave de microservicios, desacoplando funcionalidades críticas como la gestión de usuarios, citas, servicios y notificaciones. Esto facilitó el mantenimiento, la escalabilidad y el desarrollo independiente de cada módulo.
+
+Además, se abordó correctamente la separación de responsabilidades entre servicios, así como su despliegue independiente, gracias al uso del **Eureka Server** como servicio descubridor y del **API Gateway** como punto centralizado de entrada.
+
+Finalmente, se utilizaron herramientas que facilitaron la comunicación dinámica entre los microservicios, permitiendo una integración fluida mediante descubrimiento automático y enrutamiento basado en rutas. Esto validó la eficacia del enfoque distribuido en un entorno real y funcional.
+
+En conclusión, la arquitectura propuesta no solo mejora la estructura técnica del sistema, sino que también sienta las bases para futuras ampliaciones, como integración con sistemas de pago, chat en línea o analítica de citas, sin comprometer la estabilidad general del sistema.
+
+
+---
 
 ## 15. Anexos
 Video explicativo del proyecto: https://youtu.be/1qXU4fDfiHw
 
+---
+
 ## 16. Referencias (Formato APA 7)
 
-- Newman, S. (2022). *Building Microservices* (2nd ed.). SamNewman.io.  
-- Späth, P., Cosmina, I., Harrop, R., & Schaefer, C. (2023). *Pro Spring 6: An In-Depth Guide to the Spring Framework*. Apress.  
-- Heckler, M. (2021). *Spring Boot: Up and Running: Building Cloud Native Java and Kotlin Applications*. O’Reilly Media.  
-- Spring Cloud. (2023). *Spring Cloud 2023.0 Release Notes*. GitHub.  
-- Baresi, L., Quattrocchi, G., & Tamburri, D. A. (2022). Microservice Architecture Practices and Experience: A Focused Look on Docker Configuration Files. *arXiv*. :contentReference[oaicite:1]{index=1}  
-- Billawa, P., Bambhore Tukaram, A., Díaz Ferreyra, N. E., Steghöfer, J.-P., Scandariato, R., & Simhandl, G. (2022). SoK: Security of Microservice Applications: A Practitioners' Perspective on Challenges and Best Practices. *arXiv*. :contentReference[oaicite:2]{index=2}  
-- Waseem, M., Liang, P., Ahmad, A., Shahin, M., Ali Khan, A., & Márquez, G. (2022). Decision Models for Selecting Patterns and Strategies in Microservices Systems and their Evaluation by Practitioners. *arXiv*. :contentReference[oaicite:3]{index=3}  
-- Waseem, M., Liang, P., Shahin, M., Di Salle, A., & Márquez, G. (2021). Design, Monitoring, and Testing of Microservices Systems: The Practitioners' Perspective. *arXiv*. :contentReference[oaicite:4]{index=4}  
+Heckler, M. (2021). Spring Boot: Up and Running: Building Cloud Native Java and Kotlin Applications. O’Reilly Media.
+
+Newman, S. (2022). Building Microservices: Designing Fine-Grained Systems (2nd ed.). O’Reilly Media.
+
+Spring Cloud. (2023). Spring Cloud 2023.0 Release Notes. GitHub. https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2023.0-Release-Notes
+
+
+ 
 
 
 
