@@ -116,3 +116,75 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+
+## 12. Implementación del API Gateway
+
+El Gateway permite enrutar automáticamente las peticiones según el nombre del servicio registrado en Eureka.
+
+Puerto: 8080
+
+Archivo application.yml:
+
+```spring
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+        - id: appointment-service
+          uri: lb://APPOINTMENT-SERVICE
+          predicates:
+            - Path=/appointments/**
+
+## 13. Resultados de la Implementación
+
+### 13.1. Pruebas Realizadas
+
+- Registro y login de usuarios  
+- Visualización del catálogo de servicios  
+- Agendamiento y cancelación de citas  
+- Envío de notificaciones por correo electrónico y WhatsApp
+
+### 13.2. Ventajas Obtenidas
+
+- Reducción del acoplamiento entre componentes  
+- Escalabilidad individual por microservicio  
+- Mejor trazabilidad de errores  
+- Facilidad en el mantenimiento  
+- Despliegue independiente de cada microservicio  
+- Centralización de rutas mediante el API Gateway
+
+### 13.3. Dificultades
+
+- Configuración inicial de Eureka Server y API Gateway  
+- Sincronización entre servicios durante pruebas conjuntas
+
+### 13.4. Soluciones Implementadas
+
+- Pruebas unitarias por separado en cada microservicio  
+- Documentación de los endpoints utilizando Swagger
+
+## 14.  Conclusiones
+La migración del sistema del spa a una arquitectura de microservicios permite una estructura más escalable, mantenible y robusta, con componentes independientes que mejoran el rendimiento y la organización del proyecto.
+
+Se comprobó la eficiencia del uso de Eureka como servicio descubridor y del API Gateway como punto de acceso unificado.
+
+La arquitectura implementada permite futuras extensiones, como integración de sistemas de pago o chat, sin afectar el resto de los componentes.
+
+## 15. Anexos
+Video explicativo del proyecto: https://youtu.be/1qXU4fDfiHw
+
+## 16. Referencias 
+Newman, S. (2015). Building Microservices: Designing Fine-Grained Systems. O'Reilly Media.
+
+Richardson, C., & Smith, F. (2016). Microservices: From Design to Deployment. NGINX, Inc.
+
+Spring. (2024). Spring Cloud Reference Documentation. Recuperado de https://spring.io/projects/spring-cloud
+
+
+
