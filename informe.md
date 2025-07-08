@@ -1,58 +1,75 @@
 # TENDENCIAS TECNOLOGICAS
 
 ## 1. Titulo
-TAS4 - Red de contenedores mysql y phpmyadmin
-## 2. Tiempo de duración
-El tiempo de duración fue de 5 horas aproximadamente para el desarrollo de la práctica.
+ARQUITECTURA DE MICROSERVICIOS PARA LA APLICACIÓN DE AGENDAMIENTO DE CITAS EN UN SPA
+## 2. Integrantes
+Mateo Gabriel Campo
+Mayra Alejandra Medranda
 
-## 3. Fundamentos:
+## 3.  Introducción
 
-En esta prácjhhbhxjdbcljdtica se trabajó con contenedores Docker, comprendiendo conceptos fundamentales de redes como:
+Los sistemas monolíticos presentan limitaciones en cuanto a escalabilidad, mantenibilidad y tolerancia a fallos. En este proyecto práctico se puede observar la migración del sistema de agendamiento de citas de un centro de spa desde una arquitectura monolítica hacia una arquitectura de microservicios.
 
-Dirección IP: Identificador único para la comunicación entre dispositivos o contenedores en una red.
-Puerto: Punto de acceso para diferenciar múltiples servicios en un mismo contenedor o máquina.
-Red personalizada en Docker: Permite la comunicación controlada y segura entre contenedores.
+Esta funcionalidad busca mejorar la escalabilidad, la flexibilidad, el mantenimiento y la disponibilidad del sistema, lo que permitirá un desarrollo y despliegue independiente de funcionalidades clave, mejorando la eficiencia del sistema.
 
-MySQL es un sistema de gestión de bases de datos relacional (RDBMS), ampliamente utilizado para almacenar y administrar información estructurada. En esta práctica, se utiliza MySQL dentro de un contenedor Docker para gestionar bases de datos de prueba.
 
-phpMyAdmin es una herramienta basada en web que permite la administración de bases de datos MySQL a través de una interfaz gráfica amigable, facilitando la creación, modificación y eliminación de bases de datos y registros.
 
-Esta práctica tiene dos enfoques:
-- Crear una red personalizada en Docker para permitir la comunicación entre contenedores.
+## 4. Objetivos
 
-- Implementar y conectar dos servicios (MySQL y phpMyAdmin) utilizando dicha red
+-Aplicar los conceptos de arquitectura de microservicios a un proyecto práctico, 
+-Abordar la separación de responsabilidades, despliegue independiente y uso de componentes clave como el servicio descubridor (Eureka) y el API Gateway.
+-Aplicar herramientas de descubrimiento de servicios y punto de acceso único en una arquitectura de microservicios con el fin de facilitar la comunicación dinámica y centralizada entre múltiples servicios distribuidos.
 
-Además, se utilizó MySQL que es un sistema de gestión de bases de datos relacional y phpMyAdmin que es una herramienta web para administrar bases de datos MySQL de forma gráfica.
 
-El objetivo es crear una red personalizada en Docker para interconectar dos contenedores: uno ejecutando MySQL y otro phpMyAdmin.
+## 5. Selección de funcionalidades 
 
-## 4. Conocimientos previos.
+Para el proyecto se  han seleccionado las siguientes funcionalidades para ser desacopladas como microservicios independientes:
 
-Para realizar esta practica el estudiante necesita tener claro los siguientes temas:
-- Uso de la terminal o línea de comandos
-- Manejo de navegador
-- Uso básico de Docker
-- Conceptos de redes en Docker
-- Manejo básico de bases de datos MySQL
-- Uso de phpMyAdmin
-Ademas:
-- Comandos para crear redes.
-- Unir contendores a una red
-- Configurar aplicaciones
+- Gestor de Usuarios: Registro, inicio de sesión, autenticación y recuperación de contraseña.
+- Gestor de citas: Agendamiento, modificación, cancelación, consulta y estado de citas.
+- Gestor de Servicios del SPA: Visualización del catálogo de servicios disponibles.
+- Servicio de Notificaciones: Envío de correos y mensajes por WhatsApp para confirmaciones y recordatorios.
 
-## 5. Objetivos a alcanzar
 
-- Implementar redes de contenedores en Docker para permitir la       comunicación entre aplicaciones contenerizadas.
-- Comprender los diferentes tipos de redes disponibles.
-- Crear dos contenedores, uno para MySQL y otro para phpMyAdmin, establecer una red personalizada en Docker que permita la comunicación entre ambos, 
-- Crear una base de datos de prueba usando la interfaz de phpMyAdmin.
+## 6. Diseño Modular
 
-## 6. Equipo necesario:
+Tabla 1. 
+Microservicio
+Descripción
+Tecnología
+Base de Datos
+API REST
+user-service
+Registro, login, auth, autenticación JWT
+Spring Boot, JW, Node.js
+Usuario: id, name,email, contraseña
+POST / register
+  POST/ login
+POST/ profile
+appointment-
+service
+Gestión de servicios ofrecidos,
+disponibilidad y a agendamiento de citas
+Spring Boot
+Citas: id,usuario_i,service_id, fecha,estado
+GET /appointments
+POST /appointments
+PUT /appointments/{id}
+DELETE/ appointments/{id}
+service-
+catálogo
+Catálogo de servicios
+FastAPI
+PostgreSQL
+/api/services, /api/services/{id}  /reschedule
+notification-service
+Notificaciones por correo y WhatsApp
+Node.js + Twilio + Nodemailer
+No aplica
+/notify/email, /notify/whatsapp
 
-- Computador con sistema operativo Windows/Linux/Mac 
-- Cuenta en docker play
-- Docker y terminal
-- Uso de phpMyAdmin
+
+
 
 
 ## 7. Material de apoyo.
